@@ -7,7 +7,9 @@ public class Input {
 		// TODO: Implement method
 		Scanner scan = new Scanner(System.in);
 		String command = scan.nextLine();
-		return command;
+		
+		String[] input = command.split(" ");
+		return input;
 	}
 	
 	public static void parse(String[] command, Player player) {

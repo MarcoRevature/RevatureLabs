@@ -28,25 +28,7 @@ public class DBUtil {
 	
 	public Connection getConnection() throws Exception {
 		if(this.conn == null) {
-			
-			String configFilePath = System.getProperty(AppConstants.CONFIG_FILE);
-			
-			logger.info("Reading config file in location: "+configFilePath);
-			
-			try(FileInputStream fis = new FileInputStream(configFilePath)){
-				
-				Properties props = new Properties();
-				props.load(fis);
-				
-				this.conn = DriverManager.getConnection(props.getProperty(AppConstants.DB_URL),
-						props.getProperty(AppConstants.DB_USER),
-						props.getProperty(AppConstants.DB_PASSWORD));
-				
-			} catch (Exception e) {
-				logger.warn("Unable to get database connection",e);
-				throw e;
-			}
-			
+			this.conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","XJ0EDB");
 		}
 		return this.conn;
 	}
